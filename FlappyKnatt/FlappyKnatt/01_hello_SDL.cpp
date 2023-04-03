@@ -30,7 +30,6 @@ int main(int argc, char* args[])
 		return -1;
 	}
 
-	window.render(image);
 
 	// while(!window.quit())
 	//     window.update();
@@ -46,6 +45,7 @@ int main(int argc, char* args[])
 				quit = true;
 			}
 		}
+		window.render(image);
 	}
 
 	return 0;
