@@ -26,7 +26,7 @@ int main(int argc, char* args[])
 
 
 	//Load media
-	auto image{make_unique<Image>("img/0.bmp")};
+	auto image{make_unique<Image>("img/0.bmp", window.screenRenderer)};
 	if (!image->wasSuccessful())
 	{
 		printf("Failed to load media!\n");
@@ -52,14 +52,14 @@ int main(int argc, char* args[])
 			else if (e.type == SDL_KEYDOWN && !e.key.repeat) {
 				switch (e.key.keysym.sym) {
 				case SDLK_RETURN:
-					image = std::move(make_unique<Image>( "img/1.bmp" ));
+					image = std::move(make_unique<Image>( "img/1.bmp", window.screenRenderer));
 				}
 				break;
 			}
 			else if (e.type == SDL_KEYUP && !e.key.repeat) {
 				switch (e.key.keysym.sym) {
 				case SDLK_RETURN:
-					image = std::move(make_unique<Image>("img/0.bmp"));
+					image = std::move(make_unique<Image>("img/0.bmp", window.screenRenderer));
 				}
 				break;
 			}

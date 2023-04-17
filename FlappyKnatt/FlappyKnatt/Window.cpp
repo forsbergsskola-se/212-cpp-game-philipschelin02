@@ -20,7 +20,7 @@ Window::Window(int width, int height) : success{} {
 	}
 
 	//Get window surface
-	screenSurface = SDL_GetWindowSurface(window);
+	screenRenderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	success = true;
 
 }
@@ -36,7 +36,7 @@ Window::~Window() {
 
 void Window::render(Image& image) {
 	//Apply image
-	SDL_BlitSurface(image.getResource(), nullptr, screenSurface, nullptr);
+	SDL_RenderCopy(screenRenderer, image.getResource(), NULL, NULL);
 	//Update the surface
-	SDL_UpdateWindowSurface(window);
+	SDL_RenderPresent(screenRenderer);
 }
