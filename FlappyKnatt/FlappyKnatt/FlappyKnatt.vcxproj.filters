@@ -46,11 +46,13 @@
     <Text Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="..\ext\SDL2_ttf-2.20.2\lib\x86\SDL2_ttf.dll">
-      <Filter>dlls\x86</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="..\ext\SDL2_ttf-2.20.2\lib\x64\SDL2_ttf.dll">
       <Filter>dlls\x64</Filter>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\ext\SDL2_ttf-2.20.2\lib\x86\SDL2_ttf.dll">
+      <Filter>dlls\x86</Filter>
+    </None>
   </ItemGroup>
 </Project>

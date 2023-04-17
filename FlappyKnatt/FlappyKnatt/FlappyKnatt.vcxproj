@@ -36,9 +36,9 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="..\ext\SDL2_ttf-2.20.2\lib\x86\SDL2_ttf.dll">
+    <None Include="..\ext\SDL2_ttf-2.20.2\lib\x86\SDL2_ttf.dll">
       <FileType>Document</FileType>
-    </CopyFileToFolders>
+    </None>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

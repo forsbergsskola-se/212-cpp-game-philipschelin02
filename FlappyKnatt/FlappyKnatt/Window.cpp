@@ -34,9 +34,10 @@ Window::~Window() {
 	SDL_Quit();
 }
 
-void Window::render(Image& image) {
+void Window::render(Image& image, SDL_Texture* textTexture, SDL_Rect textRect) {
 	//Apply image
 	SDL_RenderCopy(screenRenderer, image.getResource(), NULL, NULL);
+	SDL_RenderCopy(screenRenderer, textTexture, NULL, &textRect);
 	//Update the surface
 	SDL_RenderPresent(screenRenderer);
 }
