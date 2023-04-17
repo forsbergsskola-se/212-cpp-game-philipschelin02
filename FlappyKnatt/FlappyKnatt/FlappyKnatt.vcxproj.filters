@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="dlls">
+      <UniqueIdentifier>{6921d428-422f-4698-989a-2185a46903ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dlls\x64">
+      <UniqueIdentifier>{9c7b1173-06a6-472d-95be-9d12624b8539}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dlls\x86">
+      <UniqueIdentifier>{93809756-c7bd-4552-ba9e-72336ee7ccb3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_hello_SDL.cpp">
@@ -35,5 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\ext\SDL2_ttf-2.20.2\lib\x86\SDL2_ttf.dll">
+      <Filter>dlls\x86</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\ext\SDL2_ttf-2.20.2\lib\x64\SDL2_ttf.dll">
+      <Filter>dlls\x64</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

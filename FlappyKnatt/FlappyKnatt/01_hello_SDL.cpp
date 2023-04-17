@@ -7,6 +7,7 @@ and may not be redistributed without written permission.*/
 #include "Window.h"
 #include "Image.h"
 #include <memory>
+#include <SDL_ttf.h>
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 421;
