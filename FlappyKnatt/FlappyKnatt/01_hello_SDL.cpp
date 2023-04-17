@@ -66,18 +66,24 @@ int main(int argc, char* args[])
 			}
 			else if (e.type == SDL_KEYDOWN && !e.key.repeat) {
 				switch (e.key.keysym.sym) {
-				case SDLK_RETURN:
+				case SDLK_SPACE:
 					image = std::move(make_unique<Image>( "img/1.bmp", window.screenRenderer));
 
 					// increment cookies
-					// destroy textSurface
-					//  <<<<< HERE
+					cookies++;
+					SDL_DestroyTexture(textTexture);
+					cookieText = to_string(cookies);
+					textSurface = TTF_RenderText_Solid(gFont, cookieText.c_str(), textColor);
+					textTexture = SDL_CreateTextureFromSurface(window.screenRenderer, textSurface);
+					SDL_FreeSurface(textSurface);
+					mWidth = textSurface->w;
+					mHeight = textSurface->h;
 				}
 				break;
 			}
 			else if (e.type == SDL_KEYUP && !e.key.repeat) {
 				switch (e.key.keysym.sym) {
-				case SDLK_RETURN:
+				case SDLK_SPACE:
 					image = std::move(make_unique<Image>("img/0.bmp", window.screenRenderer));
 				}
 				break;
