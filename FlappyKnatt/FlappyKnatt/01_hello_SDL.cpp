@@ -6,20 +6,13 @@ and may not be redistributed without written permission.*/
 #include <stdio.h>
 #include "Window.h"
 #include "Image.h"
+#include <memory>
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 421;
+const int SCREEN_HEIGHT = 212;
 
-enum KeyPressSurfaces
-{
-	KEY_PRESS_SURFACE_DEFAULT,
-	KEY_PRESS_SURFACE_UP,
-	KEY_PRESS_SURFACE_DOWN,
-	KEY_PRESS_SURFACE_LEFT,
-	KEY_PRESS_SURFACE_RIGHT,
-	KEY_PRESS_SURFACE_TOTAL
-};
+using namespace std;
 
 int main(int argc, char* args[])
 {
@@ -33,12 +26,14 @@ int main(int argc, char* args[])
 
 
 	//Load media
-	Image image{"img/hello_world.bmp"};
-	if (!image.wasSuccessful())
+	auto image{make_unique<Image>("img/0.bmp")};
+	if (!image->wasSuccessful())
 	{
 		printf("Failed to load media!\n");
 		return -1;
 	}
+	//Load media when space is pressed
+
 
 
 	// while(!window.quit())
@@ -54,8 +49,22 @@ int main(int argc, char* args[])
 			{
 				quit = true;
 			}
+			else if (e.type == SDL_KEYDOWN && !e.key.repeat) {
+				switch (e.key.keysym.sym) {
+				case SDLK_RETURN:
+					image = std::move(make_unique<Image>( "img/1.bmp" ));
+				}
+				break;
+			}
+			else if (e.type == SDL_KEYUP && !e.key.repeat) {
+				switch (e.key.keysym.sym) {
+				case SDLK_RETURN:
+					image = std::move(make_unique<Image>("img/0.bmp"));
+				}
+				break;
+			}
 		}
-		window.render(image);
+		window.render(*image);
 	}
 
 	return 0;
