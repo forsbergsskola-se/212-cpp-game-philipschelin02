@@ -12,7 +12,7 @@ Window::Window(int width, int height) : success{} {
 	}
 
 	//Create window
-	window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("Button Masher", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 	if (!window)
 	{
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
