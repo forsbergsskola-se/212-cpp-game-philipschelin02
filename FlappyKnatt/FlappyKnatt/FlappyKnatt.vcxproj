@@ -20,10 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_hello_SDL.cpp" />
+    <ClCompile Include="CookieModel.cpp" />
+    <ClCompile Include="CookieView.cpp" />
+    <ClCompile Include="ICookieObserver.cpp" />
+    <ClCompile Include="ICookieSubject.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CookieModel.h" />
+    <ClInclude Include="CookieView.h" />
+    <ClInclude Include="ICookieObserver.h" />
+    <ClInclude Include="ICookieSubject.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

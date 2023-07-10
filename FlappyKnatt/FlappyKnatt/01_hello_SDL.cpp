@@ -9,6 +9,8 @@ and may not be redistributed without written permission.*/
 #include <memory>
 #include <SDL_ttf.h>
 #include <string>
+#include "CookieModel.h"
+#include "CookieView.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 421;
@@ -37,22 +39,8 @@ int main(int argc, char* args[])
 	//Load text
 	TTF_Init();
 	auto gFont = TTF_OpenFont("font/lazy.ttf", 28);
-	SDL_Color textColor = { 0, 0, 0 };
-	int cookies = 0;
-	// DO ALL OF THIS AGAIN IN LINE 74
-	string cookieText = to_string(cookies);
-	SDL_Surface* textSurface = TTF_RenderText_Solid(gFont, cookieText.c_str(), textColor);
-	auto textTexture = SDL_CreateTextureFromSurface(window.screenRenderer, textSurface);
-	SDL_FreeSurface(textSurface);
-	auto mWidth = textSurface->w;
-	auto mHeight = textSurface->h;
-	// ALL UP TO HERE
-	// BUT DON'T DO:   string cookieText = .... but instead just cookieText = ...
-	// ALSO NOT auto textTexture = ... but instead textTexture = ...
-
-
-	// while(!window.quit())
-	//     window.update();
+	CookieModel cookieModel{};
+	CookieView cookieView{ gFont, &window, &cookieModel };
 
 	//Hack to get window to stay up
 	SDL_Event e; bool quit = false;
@@ -70,14 +58,7 @@ int main(int argc, char* args[])
 					image = std::move(make_unique<Image>( "img/1.bmp", window.screenRenderer));
 
 					// increment cookies
-					cookies++;
-					SDL_DestroyTexture(textTexture);
-					cookieText = to_string(cookies);
-					textSurface = TTF_RenderText_Solid(gFont, cookieText.c_str(), textColor);
-					textTexture = SDL_CreateTextureFromSurface(window.screenRenderer, textSurface);
-					SDL_FreeSurface(textSurface);
-					mWidth = textSurface->w;
-					mHeight = textSurface->h;
+ 					cookieModel.addCookie();
 				}
 				break;
 			}
@@ -89,7 +70,7 @@ int main(int argc, char* args[])
 				break;
 			}
 		}
-		window.render(*image, textTexture, SDL_Rect{SCREEN_WIDTH/2-mWidth/2,SCREEN_HEIGHT/3-mHeight/2, mWidth, mHeight});
+		window.render(*image, cookieView.textTexture, SDL_Rect{SCREEN_WIDTH/2- cookieView.mWidth/2,SCREEN_HEIGHT/3- cookieView.mHeight/2, cookieView.mWidth, cookieView.mHeight});
 	}
 
 	return 0;
